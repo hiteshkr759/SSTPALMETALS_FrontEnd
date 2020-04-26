@@ -1,0 +1,30 @@
+<div class="row" >
+    <div class="col-sm-12 col-md-5">
+        <div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite" *ngIf="showPagination">
+            Showing 
+            {{((paginationConfig.currentPage - 1 ) * totalPage.length) + 1}}
+            to
+            {{ paginationConfig.totalRecordCount > ( paginationConfig.currentPage * paginationConfig.noOfRecordPerPage) ?  paginationConfig.currentPage * paginationConfig.noOfRecordPerPage: paginationConfig.totalRecordCount }}
+            of 
+            {{paginationConfig.totalRecordCount}} entries
+        </div>
+        <div *ngIf="!showPagination">
+            {{paginationConfig.totalRecordCount}} entries
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-7" *ngIf="showPagination">
+        <div class="dataTables_paginate paging_simple_numbers d-flex justify-content-end" id="dataTable_paginate">
+            <ul class="pagination">
+                <li class="paginate_button page-item previous" [ngClass]="{disabled: isFirstPage}" id="dataTable_previous">
+                    <button aria-controls="dataTable"  class="page-link" (click)="onPrev()">Previous</button>
+                </li>
+                <li class="paginate_button page-item" [ngClass]="{active: paginationConfig.currentPage == item}" *ngFor="let item of totalPage">
+                    <button aria-controls="dataTable"  class="page-link" (click)="onPage(item)" >{{item}}</button>
+                </li>
+                <li class="paginate_button page-item next" id="dataTable_next" [ngClass]="{disabled: isLastPage}">
+                    <button aria-controls="dataTable" class="page-link" (click)="onNext()">Next</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
