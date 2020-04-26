@@ -1,0 +1,125 @@
+<main>
+    <div class="container-fluid">
+        <h3 class="mt-2">{{title}}</h3>
+        <ol class="breadcrumb mt-4">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Inventory</a></li>
+            <li class="breadcrumb-item"><a href="#">Products</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{title}}</li>
+        </ol>
+        <div class="row">
+            <div class="col col-6">
+                <div class="card rounded-lg mt-2">
+                    <div class="card-header"><h3 class="text-center font-weight-light my-0">{{title}}</h3></div>
+                    <div class="card-body">
+                        <form [formGroup]="productForm" (ngSubmit)="handleProductSubmit()"> 
+                            <div class="form-row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="small mb-1" for="category">Category</label>
+                                        <select class="form-control" id="category" formControlName="categoryId">
+                                            <option value="" >Select</option>
+                                            <option *ngFor="let category of categories" [value] = "category.id" >{{category.name}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="small mb-1" for="product">Product</label>
+                                        <input class="form-control py-2" id="product" type="text" formControlName="name" placeholder="Enter Product Name">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="small mb-1" for="unit">Measurment Unit</label>
+                                        <input class="form-control py-2" id="unit" type="text" formControlName="unit" placeholder="Unit">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="small mb-1" for="note">Note</label>
+                                        <textarea class="form-control py-2" id="note" formControlName="note" placeholder="Note"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="custom-control custom-checkbox  mr-sm-2 form-group">
+                                        <input type="checkbox" id="isActive" formControlName="isActive" class="custom-control-input" checked>
+                                        <label class="mb-1 ml-2 custom-control-label" for="isActive">Product Is Active</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <input type="submit" [value]="editMode ? 'Update':'Insert'" class="btn btn-primary mr-2">
+                                    <input type="reset" value="Reset" class="btn btn-secondary ml-2">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-6">
+                <div class="card rounded-lg mt-2">
+                    <div class="card-header"><h3 class="text-center font-weight-light my-0">Manange Product Stocks</h3></div>
+                    <div class="card-body">
+                        <form [formGroup]="stockForm" (ngSubmit)="handleStockSubmit()" >
+                            <div class="form-row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="small mb-1" for="purchaseDate">Purchase Date</label>
+                                        <input class="form-control py-2" id="purchaseDate" formControlName="purchaseDate" type="date" placeholder="Select Date">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="small mb-1" for="purchaseUnit">Purchased Unit</label>
+                                        <input class="form-control py-2" id="purchaseUnit" formControlName="purchaseUnit" type="text" placeholder="Purchase Unit">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="small mb-1" for="purchasePerUnitCost">Purchased Per Unit Cost</label>
+                                        <input class="form-control py-2" id="purchasePerUnitCost" formControlName="purchasePerUnitCost" type="text" placeholder="Per Unit Cost">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input type="submit" [value]="editStockMode ? 'Update' : 'Insert' " class="btn btn-primary mr-2">
+                                        <input type="reset" value="Reset" class="btn btn-secondary ml-2">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="table-responsive mt-2">
+                            <h5 class="mb-2">Past Purchased Details</h5>
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Unit</th>
+                                        <th>Per Unit Cost</th>
+                                        <th>Amount</th>
+                                        <th class="btn-link">Add</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let stock of stocks">
+                                        <td>{{stock.purchaseDate | date}}</td>
+                                        <td>{{stock.purchaseUnit}}</td>
+                                        <td>{{stock.purchasePerUnitCost}}</td>
+                                        <td>{{stock.purchaseUnit * stock.purchasePerUnitCost}}</td>
+                                        <td (click)="editStock(stock)" class="clickable btn-link">Edit</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
