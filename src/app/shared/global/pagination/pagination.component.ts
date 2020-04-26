@@ -40,11 +40,11 @@ export class PaginationComponent implements OnInit, OnChanges {
   }
 
 
-  ngOnChanges(changes: SimpleChange) : void{
-    if(!changes.firstChange){
-      this.initPageConfig();
-    }
-  }
+  // ngOnChanges(changes: SimpleChange) : void{
+  //   if(!changes.firstChange){
+  //     this.initPageConfig();
+  //   }
+  // }
 
   initPageConfig(){
     this.paginationConfig = { 
