@@ -1,0 +1,24 @@
+<main>
+    <div class="container-fluid">
+        <h3 class="mt-2">{{title}}</h3>
+        <ol class="breadcrumb mt-4">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Inventory</a></li>
+            <li class="breadcrumb-item"><a href="#">Products</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{title}}</li>
+        </ol>
+        <div class="row">
+            <div class="col col-6">
+                <app-product-search></app-product-search>
+            </div>
+            <div class="col col-6">
+                <app-customer-search></app-customer-search>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-12">
+                <app-cart-list></app-cart-list>
+            </div>
+        </div>
+    </div>
+</main>
