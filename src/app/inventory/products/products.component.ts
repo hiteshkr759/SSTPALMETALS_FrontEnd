@@ -62,6 +62,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
     this.searchkeyWordSubscription = this.searchkeyWord.valueChanges
       .pipe(debounceTime(1000))
       .subscribe(value =>{
+        // this.loadProducts();
         this.handleSearch();
       })
   }
@@ -87,7 +88,11 @@ export class ProductsComponent implements OnInit, OnDestroy {
   }
 
   loadProducts(){
-    this.productService.getProduts(this.paginationConfig).subscribe( response => {
+    const productParams = {
+      ...this.paginationConfig,
+      searchkeyWord : this.searchkeyWord.value ? this.searchkeyWord.value : ''
+    }
+    this.productService.getProduts(productParams).subscribe( response => {
       this.products = response.products.data;
       this.paginationConfig.totalRecordCount = response.products.total;
     });
@@ -114,6 +119,8 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   handleSearch(){
     console.log('start Searching');
+    this.paginationConfig.currentPage = 1;
+    this.loadProducts();
   }
 
 }
