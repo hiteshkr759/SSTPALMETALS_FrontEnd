@@ -9,6 +9,7 @@ export interface PaginationConfig {
 @Component({
   selector: 'app-pagination',
   templateUrl: './pagination.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./pagination.component.scss']
 })
 export class PaginationComponent implements OnInit, OnChanges {
