@@ -119,6 +119,9 @@
                               <td>{{product.stock}}</td>
                               <td><a [routerLink]="['./'+product.id + '/edit']">Edit</a></td>
                             </tr>
+                            <tr *ngIf="products.length === 0">
+                              <td [colSpan]="'7'">No record found</td>
+                            </tr>
                           </tbody>
                       </table>
                     </div>
