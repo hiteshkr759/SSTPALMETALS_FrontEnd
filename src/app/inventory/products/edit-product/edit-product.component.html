@@ -114,6 +114,11 @@
                                         <td>{{stock.purchaseUnit * stock.purchasePerUnitCost}}</td>
                                         <td (click)="editStock(stock)" class="clickable btn-link">Edit</td>
                                     </tr>
+                                    <tr *ngIf="stocks.length == 0">
+                                        <td colspan="6">
+                                            No Stock Detail Found
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
