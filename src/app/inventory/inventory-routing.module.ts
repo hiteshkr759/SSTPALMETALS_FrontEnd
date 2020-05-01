@@ -1,3 +1,4 @@
+import { CustomerComponent } from './customer/customer.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { InventoryComponent } from './inventory.component';
@@ -39,6 +40,14 @@ const routes: Routes = [{
   {
     path : 'supplier/:id/order/:orderId',
     component:OrderComponent
+  },
+  {
+    path : 'customer',
+    component:CustomerComponent
+  },
+  {
+    path : 'customer/:id',
+    component:CustomerComponent
   },
   {
     path : 'billing',

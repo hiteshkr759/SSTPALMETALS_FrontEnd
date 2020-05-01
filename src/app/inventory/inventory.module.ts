@@ -17,6 +17,7 @@ import { BillingComponent } from './billing/billing.component';
 import { ProductSearchComponent } from './billing/product-search/product-search.component';
 import { CustomerSearchComponent } from './billing/customer-search/customer-search.component';
 import { CartListComponent } from './billing/cart-list/cart-list.component';
+import { CustomerComponent } from './customer/customer.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { CartListComponent } from './billing/cart-list/cart-list.component';
     BillingComponent,
     ProductSearchComponent,
     CustomerSearchComponent,
-    CartListComponent
+    CartListComponent,
+    CustomerComponent
   ],
   imports: [
     CommonModule,
