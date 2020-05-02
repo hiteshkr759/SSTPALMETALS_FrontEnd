@@ -1,1 +1,70 @@
-<p>customer works!</p>
+
+<main>
+    <div class="container-fluid">
+        <h3 class="mt-2">Customer</h3>
+        <ol class="breadcrumb mt-4">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item"><a href="#">Inventory</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Customer</li>
+        </ol>
+        <div class="card mb-4">
+            <div class="card-header"><i class="fas fa-table mr-1"></i>Customer</div>
+            <div class="card-body">
+              <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                <div class="row mb-2">
+                  <div class="col-sm-12 col-md-6">
+                    <div class="dataTables_length form-inline" id="dataTable_length">
+                      <div class="form-group">
+                        <label for="per-page" class="mr-2">Record Per Page</label>
+                        <select id="per-page" name="dataTable_length" aria-controls="dataTable" class="custom-select custom-select-sm form-control form-control-sm" (change)="handleRecordPerPage($event.target.value)" >
+                          <option *ngFor="let opt of showResultPerPage" [value]="opt" [selected]="opt == paginationConfig.noOfRecordPerPage ">{{opt}}</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                    <div id="dataTable_filter" class="dataTables_filter d-flex justify-content-end">
+                      <label><input type="search" class="form-control form-control-sm" [formControl]="searchkeyWord" placeholder="Search Customer" aria-controls="dataTable"></label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="table-responsive">
+                      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                          <thead>
+                              <tr>
+                                <th>Name</th>
+                                <th>Phone No</th>
+                                <th>Total Advance</th>
+                                <th>Total Dues</th>
+                                <th>Total Bussiness</th>
+                                <th>
+                                  <a [routerLink]="['./add']" >Add</a>
+                                </th>
+                              </tr>
+                          <tbody>
+                            <tr *ngFor="let customer of customers">
+                              <td>
+                                  <a [routerLink]="['./'+customer.id]">{{customer.name}}</a>
+                              </td>
+                              <td>{{customer.phoneNo}}</td>
+                              <td>{{customer.totalAdvance}}</td>
+                              <td>{{customer.totalDues}}</td>
+                              <td>{{customer.totalBussiness}}</td>
+                              <td><a [routerLink]="['./'+customer.id + '/edit']">Edit</a></td>
+                            </tr>
+                            <tr *ngIf="customers.length === 0">
+                              <td [colSpan]="'7'">No Record Found</td>
+                            </tr>
+                          </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <app-pagination [(paginationConfig)]="paginationConfig" (pageChange)="handlePageChange($event)"></app-pagination>
+              </div>
+            </div>
+        </div>
+    </div>
+</main>

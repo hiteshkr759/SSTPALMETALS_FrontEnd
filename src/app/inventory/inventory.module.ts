@@ -1,3 +1,4 @@
+import { CustomerService } from './customer/service/customer.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InventoryComponent } from './inventory.component';
@@ -18,6 +19,7 @@ import { ProductSearchComponent } from './billing/product-search/product-search.
 import { CustomerSearchComponent } from './billing/customer-search/customer-search.component';
 import { CartListComponent } from './billing/cart-list/cart-list.component';
 import { CustomerComponent } from './customer/customer.component';
+import { EditCustomerComponent } from './customer/edit-customer/edit-customer.component';
 
 @NgModule({
   declarations: [
@@ -35,13 +37,14 @@ import { CustomerComponent } from './customer/customer.component';
     ProductSearchComponent,
     CustomerSearchComponent,
     CartListComponent,
-    CustomerComponent
+    CustomerComponent,
+    EditCustomerComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
     InventoryRoutingModule
   ],
-  providers:[ProductService]
+  providers:[ProductService, CustomerService]
 })
 export class InventoryModule { }

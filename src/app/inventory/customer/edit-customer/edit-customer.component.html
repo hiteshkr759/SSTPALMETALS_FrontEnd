@@ -1,0 +1,50 @@
+<main>
+    <div class="container-fluid">
+        <h3 class="mt-2">{{title}}</h3>
+        <ol class="breadcrumb mt-4">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Inventory</a></li>
+            <li class="breadcrumb-item"><a href="#">Customers</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{title}}</li>
+        </ol>
+        <div class="row">
+            <div class="col col-6">
+                <div class="card rounded-lg mt-2">
+                    <div class="card-header"><h3 class="text-center font-weight-light my-0">{{title}}</h3></div>
+                    <div class="card-body">
+                        <form [formGroup]="customerForm" (ngSubmit)="handleCustomerSubmit()"> 
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="small mb-1" for="name">Name</label>
+                                        <input class="form-control py-2" id="name" type="text" formControlName="name" placeholder="Enter Product Name">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="small mb-1" for="phoneNo">Phone No</label>
+                                        <input class="form-control py-2" id="phoneNo" type="text" formControlName="phoneNo" placeholder="Enter Product Name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="small mb-1" for="note">Note</label>
+                                        <textarea class="form-control py-2" id="note" formControlName="note" placeholder="Note"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <input type="submit" [value]="editMode ? 'Update':'Insert'" class="btn btn-primary mr-2">
+                                    <input type="reset" value="Reset" class="btn btn-secondary ml-2">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

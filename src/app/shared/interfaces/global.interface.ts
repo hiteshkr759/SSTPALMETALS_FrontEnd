@@ -13,6 +13,17 @@ export interface Product{
     is_active: boolean;
 }
 
+
+export interface Customer{
+    id: string;
+    name: string;
+    phoneNo: number;
+    totalAdvance: number;
+    totalDues: number;
+    totalBussiness: number;
+    note:string;
+}
+
 export interface Category{
     id: string;
     name: string;

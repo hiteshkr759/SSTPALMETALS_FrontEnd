@@ -1,3 +1,4 @@
+import { EditCustomerComponent } from './customer/edit-customer/edit-customer.component';
 import { CustomerComponent } from './customer/customer.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -46,8 +47,16 @@ const routes: Routes = [{
     component:CustomerComponent
   },
   {
+    path : 'customer/add',
+    component:EditCustomerComponent
+  },
+  {
     path : 'customer/:id',
-    component:CustomerComponent
+    component:EditCustomerComponent
+  },
+  {
+    path : 'customer/:id/edit',
+    component:EditCustomerComponent
   },
   {
     path : 'billing',
